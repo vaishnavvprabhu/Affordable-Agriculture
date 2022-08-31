@@ -1,5 +1,6 @@
 import 'package:agriot/screens/constant.dart';
 import 'package:agriot/widgets/custom_btn.dart';
+import 'package:agriot/widgets/main_info.dart';
 import 'package:flutter/material.dart';
 
 class LandingPage extends StatelessWidget {
@@ -23,7 +24,7 @@ class LandingPage extends StatelessWidget {
                   style: Constants.regularHeading,
                 ),
               ),
-              Text("Buttons"),
+              MainInfo(),
               Text("Buttons"),
               CustomBtn(
                 text: "History",
