@@ -1,6 +1,7 @@
 import 'package:agriot/screens/constant.dart';
 import 'package:agriot/widgets/custom_btn.dart';
 import 'package:agriot/widgets/main_info.dart';
+import 'package:agriot/widgets/sub_info.dart';
 import 'package:flutter/material.dart';
 
 class LandingPage extends StatelessWidget {
@@ -20,12 +21,27 @@ class LandingPage extends StatelessWidget {
                   top: 12.0,
                   right: 100.0,
                 ),
+                margin: EdgeInsets.only(
+                  right: 10.0,
+                ),
                 child: Text("Dashboard",
                   style: Constants.regularHeading,
                 ),
               ),
               MainInfo(),
-              Text("Buttons"),
+                 Row(
+                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SubInfo(
+                      img: "assets/images/humid.png",
+                      title: "Moisture %",
+                    ),
+                    SubInfo(
+                      img: "assets/images/pump.png",
+                      title: "Pump State",
+                    ),
+                  ],
+                ),
               CustomBtn(
                 text: "History",
                 onPressed: (){
