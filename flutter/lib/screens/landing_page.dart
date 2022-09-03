@@ -1,7 +1,9 @@
 import 'package:agriot/screens/constant.dart';
 import 'package:agriot/widgets/custom_btn.dart';
+import 'package:agriot/widgets/info_btn.dart';
 import 'package:agriot/widgets/main_info.dart';
 import 'package:agriot/widgets/sub_info.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LandingPage extends StatelessWidget {
@@ -24,8 +26,19 @@ class LandingPage extends StatelessWidget {
                 margin: EdgeInsets.only(
                   right: 10.0,
                 ),
-                child: Text("Dashboard",
-                  style: Constants.regularHeading,
+                child: Container(
+                  padding: EdgeInsets.only(
+                    left: 25.0
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text("Dashboard",
+                        style: Constants.regularHeading,
+                      ),
+                      InfoBtn()
+                    ],
+                  ),
                 ),
               ),
               MainInfo(),

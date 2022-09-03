@@ -25,12 +25,22 @@ class CustomBtn extends StatelessWidget {
           vertical: 10.0,
         ),
         margin: EdgeInsets.symmetric(
-          horizontal: 24.0,
-          vertical: 24.0,
+          horizontal: 130.0,
+          vertical: 35.0,
         ),
-        child: Text(
-          text ?? "Text ",
-          style: Constants.smallbtn,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Image(
+                image: AssetImage(
+                  "assets/images/history.png"
+                ),
+            ),
+            Text(
+              text ?? "Text ",
+              style: Constants.smallbtn,
+            ),
+          ],
         ),
       ),
     );

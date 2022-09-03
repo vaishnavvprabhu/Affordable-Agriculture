@@ -27,7 +27,7 @@ class SubInfo extends StatelessWidget {
           vertical: 12.0,
         ),
         margin: EdgeInsets.symmetric(
-          horizontal: 24.0,
+          horizontal: 20.0,
         ),
         child: SafeArea(
           child: Column(
@@ -39,11 +39,23 @@ class SubInfo extends StatelessWidget {
                 width: 32.0,
                 height: 38.0,
               ),
-              Text(
-                title ?? "Humidity"
+              Container(
+                padding: EdgeInsets.only(
+                  top: 5.0
+                ),
+                child: Text(
+                  title ?? "Humidity",
+                  style: Constants.subHead,
+                ),
               ),
-              Text(
-               text ?? "data"
+              Container(
+                padding: EdgeInsets.only(
+                  top: 5.0,
+                ),
+                child: Text(
+                 text ?? "data",
+                  style: Constants.subStatus,
+                ),
               )
             ],
           ),

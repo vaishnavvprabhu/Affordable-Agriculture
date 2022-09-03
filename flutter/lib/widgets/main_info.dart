@@ -32,11 +32,17 @@ class MainInfo extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("ESP8266"),
+                Text("ESP8266",
+                  style: Constants.mainHead,
+                ),
                 Row(
                   children: [
-                    Text("Last Updated:"),
-                    Text(text.toString())
+                    Text("Last Updated:",
+                      style: Constants.mainStatus,
+                    ),
+                    Text(text.toString(),
+                      style: Constants.mainStatus,
+                    )
                   ],
                 )
               ],
