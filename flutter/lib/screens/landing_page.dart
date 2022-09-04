@@ -26,12 +26,29 @@ Future<String> getMoistureJsonData() async{
 
   //data.forEach((element) {
   //Map obj = element;
-  String humidity = data['field1'];
-  print("The Field 1 val is ");
-  print(data['field1']);
+  String humidityRaw = data['field1'];
+  int humidityPercent = int.parse(humidityRaw);
+  double humidityPercentCalc = 100  * humidityPercent/1024;
+  String humidity = "" + humidityPercentCalc.toInt().toString() + "%";
   //String pump_state = obj ['field2'];
   //});
   return humidity;
+}
+
+Future<String> getDateJsonData() async{
+  Response response = await get(Uri.parse('https://api.thingspeak.com/channels/1714621/fields/field1/1.json?api_key=G63QV5S759X5OXZ9&results=1'));
+  print(response.body);
+  final data = jsonDecode(await response.body);
+
+  //data.forEach((element) {
+  //Map obj = element;
+  String lastupdated = data['created_at'];
+  String lastupdate = lastupdated.substring(11,19);
+  print("object ");
+  print(lastupdate);
+  //String pump_state = obj ['field2'];
+  //});
+  return lastupdate;
 }
 
 Future<String> getPumpJsonData() async{
@@ -47,13 +64,13 @@ Future<String> getPumpJsonData() async{
     {
       pumpStatus = "OFF";
     }
-  else if(pumpState == 1)
+  /*else if(pumpState == 1)
     {
       pumpStatus = "ON";
-    }
+    }*/
   else
     {
-      pumpStatus = "OFF";
+      pumpStatus = "ON";
     }
   return pumpStatus;
 }
@@ -67,6 +84,7 @@ Future<String> getPumpJsonData() async{
 class _LandingPageState extends State<LandingPage> {
   var field1 = null;
   var field3 = null;
+  var date = null;
 
   Future<String> moisture = getMoistureJsonData();
   String baseMoisture() => moisture.toString();
@@ -84,7 +102,7 @@ class _LandingPageState extends State<LandingPage> {
               Container(
                 padding: EdgeInsets.only(
                   top: 12.0,
-                  right: 100.0,
+                  right: 20.0,
                 ),
                 margin: EdgeInsets.only(
                   right: 10.0,
@@ -104,7 +122,9 @@ class _LandingPageState extends State<LandingPage> {
                   ),
                 ),
               ),
-              MainInfo(),
+              MainInfo(
+                text: date,
+              ),
                  Row(
                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -145,6 +165,11 @@ class _LandingPageState extends State<LandingPage> {
     getPumpJsonData().then((pumpStatus) {
       setState(() {
         field3 = pumpStatus;
+      });
+    });
+    getDateJsonData().then((lastUpdate) {
+      setState(() {
+        date = lastUpdate;
       });
     });
     super.initState();
