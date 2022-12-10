@@ -29,7 +29,7 @@ class CustomBtn extends StatelessWidget {
           vertical: 35.0,
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Image(
                 image: AssetImage(
